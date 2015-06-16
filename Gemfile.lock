@@ -37,6 +37,8 @@ GEM
     rack (1.6.1)
     rack-accept (0.4.5)
       rack (>= 0.4)
+    rack-cors (0.2.8)
+      rack
     rack-mount (0.8.3)
       rack (>= 1.0.0)
     shotgun (0.9)
@@ -55,4 +57,5 @@ PLATFORMS
 
 DEPENDENCIES
   grape
+  rack-cors
   shotgun

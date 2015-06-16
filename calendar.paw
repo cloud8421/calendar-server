@@ -62,7 +62,7 @@
     </databaseInfo>
     <object type="LMREQUEST" id="z102">
         <attribute name="uuid" type="string">6F7AB0DD-BB35-4C24-8F36-3C4B36C07C2A</attribute>
-        <attribute name="url" type="string">http://localhost:9393/events</attribute>
+        <attribute name="url" type="string">http://localhost:9292/events</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
