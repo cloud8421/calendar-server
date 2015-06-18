@@ -2,6 +2,10 @@ require 'bundler'
 Bundler.setup
 
 require 'rack/cors'
+require 'dotenv'
+
+Dotenv.load
+
 require './calendar'
 
 use Rack::Cors do

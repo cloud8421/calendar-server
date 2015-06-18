@@ -1,5 +1,5 @@
 require 'grape'
-require './event'
+require './database'
 
 module Calendar
   class API < Grape::API
@@ -9,7 +9,7 @@ module Calendar
     resource :events do
       desc 'Get all events'
       get do
-        Event.all
+        EventRepository.all
       end
     end
   end
