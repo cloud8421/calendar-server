@@ -3,6 +3,15 @@ require 'lotus/model'
 class Event
   include Lotus::Entity
   attributes :id, :name, :starts_at, :ends_at
+
+  def to_hash
+    {
+      id: id,
+      name: name,
+      starts_at: starts_at,
+      ends_at: ends_at
+    }
+  end
 end
 
 class EventRepository

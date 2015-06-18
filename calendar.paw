@@ -5,7 +5,7 @@
     <databaseInfo>
         <version>134481920</version>
         <UUID>7C000BCD-9BB5-47B7-9619-FD159BD6DA1E</UUID>
-        <nextObjectID>108</nextObjectID>
+        <nextObjectID>114</nextObjectID>
         <metadata>
             <plist version="1.0">
                 <dict>
@@ -62,7 +62,7 @@
     </databaseInfo>
     <object type="LMREQUEST" id="z102">
         <attribute name="uuid" type="string">6F7AB0DD-BB35-4C24-8F36-3C4B36C07C2A</attribute>
-        <attribute name="url" type="string">http://localhost:9292/events</attribute>
+        <attribute name="url" type="string">http://localhost:9393/events</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -95,8 +95,7 @@
         <attribute name="name" type="string">Default Jar</attribute>
     </object>
     <object type="LMKEYVALUE" id="z106">
-        <attribute name="value" type="string">application/vnd.calendar-v1+json
-</attribute>
+        <attribute name="value" type="string">application/vnd.calendar-v1+json</attribute>
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">Accept</attribute>
         <attribute name="enabled" type="bool">1</attribute>
@@ -114,5 +113,62 @@
         <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z102"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z109">
+        <attribute name="uuid" type="string">12F9B494-EA6E-42C8-AE71-676ACCE3639E</attribute>
+        <attribute name="url" type="string">http://localhost:9393/events</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">POST</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="body" type="string">[{"data":{"json":"{\\"name\\":\\"Beer with friends\\",\\"starts_at\\":\\"2015-06-18T18:00:00.523Z\\",\\"ends_at\\":\\"2015-06-18T21:00:00.523Z\\"}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">POST events</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z112 z113 z111 z114"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z111">
+        <attribute name="value" type="string">application/vnd.calendar-v1+json
+</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">Accept</attribute>
+        <attribute name="enabled" type="bool">0</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z109"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z112">
+        <attribute name="value" type="string">application/json</attribute>
+        <attribute name="order" type="int64">3</attribute>
+        <attribute name="name" type="string">Content-Type</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z109"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z113">
+        <attribute name="value" type="string"></attribute>
+        <attribute name="order" type="int64">4</attribute>
+        <attribute name="name" type="string">Content-Length</attribute>
+        <attribute name="enabled" type="bool">0</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z109"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z114">
+        <attribute name="value" type="string"></attribute>
+        <attribute name="order" type="int64">5</attribute>
+        <attribute name="name" type="string"></attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z109"></relationship>
     </object>
 </database>
