@@ -37,6 +37,7 @@ module Calendar
         if event.valid?
           status 201
           event = EventRepository.create(event)
+          event.to_hash
         else
           status 406
           format_errors(event.errors)
