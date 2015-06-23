@@ -5,7 +5,7 @@
     <databaseInfo>
         <version>134481920</version>
         <UUID>7C000BCD-9BB5-47B7-9619-FD159BD6DA1E</UUID>
-        <nextObjectID>114</nextObjectID>
+        <nextObjectID>122</nextObjectID>
         <metadata>
             <plist version="1.0">
                 <dict>
@@ -62,7 +62,7 @@
     </databaseInfo>
     <object type="LMREQUEST" id="z102">
         <attribute name="uuid" type="string">6F7AB0DD-BB35-4C24-8F36-3C4B36C07C2A</attribute>
-        <attribute name="url" type="string">http://localhost:9393/events</attribute>
+        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"0BA15ECB-8EE7-402B-B4AD-29AA1492D001"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/events"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -73,21 +73,21 @@
         <attribute name="name" type="string">GET events</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z108 z106"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z106 z108"></relationship>
     </object>
     <object type="LMENVIRONMENT" id="z103">
         <attribute name="uuid" type="string">DDFB85F0-792E-48D2-96D9-C0F42FE6DBC4</attribute>
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">Default Environment</attribute>
         <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z104"></relationship>
-        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE"></relationship>
+        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z115"></relationship>
     </object>
     <object type="LMENVIRONMENTDOMAIN" id="z104">
         <attribute name="uuid" type="string">2ED32FDC-75CE-4D38-9EC4-1A4AD2E7A766</attribute>
         <attribute name="order" type="int64">0</attribute>
-        <attribute name="name" type="string">Default Domain</attribute>
+        <attribute name="name" type="string">Development</attribute>
         <relationship name="environments" type="0/0" destination="LMENVIRONMENT" idrefs="z103"></relationship>
-        <relationship name="variables" type="0/0" destination="LMENVIRONMENTVARIABLE"></relationship>
+        <relationship name="variables" type="0/0" destination="LMENVIRONMENTVARIABLE" idrefs="z116"></relationship>
     </object>
     <object type="LMCOOKIEJAR" id="z105">
         <attribute name="uuid" type="string">A3F49436-7D8F-4E26-A124-338479813116</attribute>
@@ -116,7 +116,7 @@
     </object>
     <object type="LMREQUEST" id="z109">
         <attribute name="uuid" type="string">12F9B494-EA6E-42C8-AE71-676ACCE3639E</attribute>
-        <attribute name="url" type="string">http://localhost:9393/events</attribute>
+        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"0BA15ECB-8EE7-402B-B4AD-29AA1492D001"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/events"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -128,7 +128,7 @@
         <attribute name="name" type="string">POST events</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z112 z113 z111 z114"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z113 z111 z112 z114"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z111">
         <attribute name="value" type="string">application/vnd.calendar-v1+json
@@ -170,5 +170,55 @@
         <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
         <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z109"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLEVALUE" id="z115">
+        <attribute name="value" type="string">localhost:9393</attribute>
+        <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z103"></relationship>
+        <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z116"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLE" id="z116">
+        <attribute name="uuid" type="string">0BA15ECB-8EE7-402B-B4AD-29AA1492D001</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">host</attribute>
+        <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z104"></relationship>
+        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z115"></relationship>
+    </object>
+    <object type="LMENVIRONMENT" id="z117">
+        <attribute name="uuid" type="string">E1608A79-FF0E-4706-ABFC-E6FC068C04C7</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">Default Environment</attribute>
+        <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z120"></relationship>
+        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z119"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLE" id="z118">
+        <attribute name="uuid" type="string">9D322FBE-8ABA-4854-8C39-FE656416F464</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">host</attribute>
+        <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z120"></relationship>
+        <relationship name="values" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z122 z119"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLEVALUE" id="z119">
+        <attribute name="value" type="string">new-bamboo-calendar-api.herokuapp.com</attribute>
+        <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z117"></relationship>
+        <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z118"></relationship>
+    </object>
+    <object type="LMENVIRONMENTDOMAIN" id="z120">
+        <attribute name="uuid" type="string">70A254F6-4BB3-4105-8EB0-C051BA2AB668</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">Production</attribute>
+        <relationship name="environments" type="0/0" destination="LMENVIRONMENT" idrefs="z121 z117"></relationship>
+        <relationship name="variables" type="0/0" destination="LMENVIRONMENTVARIABLE" idrefs="z118"></relationship>
+    </object>
+    <object type="LMENVIRONMENT" id="z121">
+        <attribute name="uuid" type="string">DAA8B6D5-B6CE-4A19-93E1-79918ACD4FAF</attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string">Production</attribute>
+        <relationship name="domain" type="0/1" destination="LMENVIRONMENTDOMAIN" idrefs="z120"></relationship>
+        <relationship name="variablesvalues" type="0/0" destination="LMENVIRONMENTVARIABLEVALUE" idrefs="z122"></relationship>
+    </object>
+    <object type="LMENVIRONMENTVARIABLEVALUE" id="z122">
+        <attribute name="value" type="string">new-bamboo-calendar-api.herokuapp.com</attribute>
+        <relationship name="environment" type="1/1" destination="LMENVIRONMENT" idrefs="z121"></relationship>
+        <relationship name="variable" type="1/1" destination="LMENVIRONMENTVARIABLE" idrefs="z118"></relationship>
     </object>
 </database>
