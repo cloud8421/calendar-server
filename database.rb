@@ -1,8 +1,14 @@
 require 'lotus/model'
+require 'lotus/validations'
 
 class Event
   include Lotus::Entity
-  attributes :id, :name, :starts_at, :ends_at
+  include Lotus::Validations
+
+  attribute :id, type: Integer
+  attribute :name, type: String, presence: true
+  attribute :starts_at, type: DateTime, presence: true
+  attribute :ends_at, type: DateTime, presence: true
 
   def to_hash
     {

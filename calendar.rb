@@ -2,6 +2,14 @@ require 'grape'
 require './database'
 require 'json'
 
+def format_errors(errors)
+  errors.map.reduce({}) do |memo, e|
+    memo[e.attribute_name] ||= []
+    memo[e.attribute_name] << e.validation.to_s
+    memo
+  end
+end
+
 module Calendar
   class API < Grape::API
     version 'v1', using: :header, vendor: 'calendar'
@@ -26,8 +34,13 @@ module Calendar
           starts_at: params[:starts_at],
           ends_at: params[:ends_at]
         )
-        event = EventRepository.create(event)
-        event.to_hash
+        if event.valid?
+          status 201
+          event = EventRepository.create(event)
+        else
+          status 406
+          format_errors(event.errors)
+        end
       end
 
       desc 'Delete an existing event'
