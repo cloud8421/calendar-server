@@ -1,5 +1,6 @@
 require 'grape'
 require './database'
+require './weather'
 require 'json'
 
 def format_errors(errors)
@@ -54,6 +55,13 @@ module Calendar
           status 404
           {error: 'Event not found'}
         end
+      end
+    end
+
+    resource :weather do
+      desc 'Get weather information'
+      get do
+        w = Weather.get(37.8267,-122.423)
       end
     end
   end
