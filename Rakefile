@@ -15,10 +15,10 @@ namespace :db do
       puts "<= sq:migrate:reset executed"
     end
 
-    desc "Perform migration up/down to VERSION"
+    desc "Perform migration up/down to DB_VERSION"
     task :to do
-      version = ENV['VERSION'].to_i
-      raise "No VERSION was provided" if version.nil?
+      version = ENV['DB_VERSION'].to_i
+      raise "No DB_VERSION was provided" if version.nil?
       Sequel::Migrator.run(DB, "migrations", target: version)
       puts "<= sq:migrate:to version=[#{version}] executed"
     end
