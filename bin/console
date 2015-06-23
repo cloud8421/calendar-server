@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require 'irb'
+require 'bundler'
+
+Bundler.require
+Dotenv.load
+
+require './calendar'
+
+ARGV.clear
+IRB.start
