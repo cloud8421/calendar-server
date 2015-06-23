@@ -2,6 +2,7 @@ require 'grape'
 require './database'
 require './weather'
 require 'json'
+require 'garner/mixins/rack'
 
 def format_errors(errors)
   errors.map.reduce({}) do |memo, e|
@@ -15,6 +16,8 @@ module Calendar
   class API < Grape::API
     version 'v1', using: :header, vendor: 'calendar'
     format :json
+
+    helpers Garner::Mixins::Rack
 
     resource :events do
       desc 'Get all events'
@@ -61,7 +64,9 @@ module Calendar
     resource :weather do
       desc 'Get weather information'
       get do
-        w = Weather.get(37.8267,-122.423)
+        garner.options(expires_in: 5.minutes) do
+          w = Weather.get(37.8267,-122.423)
+        end
       end
     end
   end
