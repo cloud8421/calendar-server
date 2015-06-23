@@ -29,6 +29,18 @@ module Calendar
         event = EventRepository.create(event)
         event.to_hash
       end
+
+      desc 'Delete an existing event'
+      delete ':id' do
+        event = EventRepository.find(params[:id])
+        if event
+          EventRepository.delete(event)
+          status 204
+        else
+          status 404
+          {error: 'Event not found'}
+        end
+      end
     end
   end
 end
