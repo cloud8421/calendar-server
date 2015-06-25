@@ -5,7 +5,6 @@ class Weather
   EXCLUSION_LIST = 'minutely,hourly,daily,alerts,flags'
 
   def self.get(lat, lng)
-    puts 'fetching'
     ForecastIO.forecast(lat, lng, params: {units: 'si',
                                            exclude: EXCLUSION_LIST})
   end
