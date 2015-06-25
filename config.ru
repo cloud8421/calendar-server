@@ -5,11 +5,24 @@ require 'rack/cors'
 require 'dotenv'
 require 'garner'
 
-Garner.configure do |config|
-  config.cache = ActiveSupport::Cache::FileStore.new
+Dotenv.load
+
+cache_store = ActiveSupport::Cache::FileStore.new('./tmp')
+
+if ENV['RACK_ENV'] == 'production'
+  require 'dalli'
+  
+  cache_store = ActiveSupport::Cache::MemCacheStore.new(ENV['MEMCACHIER_SERVERS'], {
+                                                          namespace: 'calendar_v1',
+                                                          compress: true,
+                                                          username: ENV['MEMCACHIER_USERNAME'],
+                                                          password: ENV['MEMCACHIER_PASSWORD']})
+
 end
 
-Dotenv.load
+Garner.configure do |config|
+  config.cache = cache_store
+end
 
 require './calendar'
 
