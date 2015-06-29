@@ -8,4 +8,9 @@ class Weather
     ForecastIO.forecast(lat, lng, params: {units: 'si',
                                            exclude: EXCLUSION_LIST})
   end
+
+  def self.at_time(lat, lng, time)
+    ForecastIO.forecast(lat, lng, time: time.to_i, params: {units: 'si',
+                                                            exclude: EXCLUSION_LIST})
+  end
 end

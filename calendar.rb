@@ -63,10 +63,16 @@ module Calendar
 
     resource :weather do
       desc 'Get weather information'
+      params do
+        requires :lat, type: Float, desc: 'Latitude'
+        requires :lng, type: Float, desc: 'Longitude'
+        requires :time, type: Time, desc: 'Forecast time'
+      end
       get do
-        garner.options(expires_in: 5.minutes) do
-          w = Weather.get(37.8267,-122.423)
-        end
+        # throw params[:time]
+        # garner.options(expires_in: 5.minutes) do
+          w = Weather.at_time(params[:lat], params[:lng], params[:time])
+        # end
       end
     end
   end
