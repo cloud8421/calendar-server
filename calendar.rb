@@ -69,10 +69,13 @@ module Calendar
         requires :time, type: Time, desc: 'Forecast time'
       end
       get do
-        # throw params[:time]
-        # garner.options(expires_in: 5.minutes) do
-          w = Weather.at_time(params[:lat], params[:lng], params[:time])
-        # end
+        garner
+          .key({lat: params[:lat],
+                lng: params[:lng],
+                time: params[:time]})
+          .options(expires_in: 2.minutes) do
+            w = Weather.at_time(params[:lat], params[:lng], params[:time])
+        end
       end
     end
   end
