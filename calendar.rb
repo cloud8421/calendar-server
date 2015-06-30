@@ -70,12 +70,10 @@ module Calendar
       end
       get do
         garner
-          .key({lat: params[:lat],
-                lng: params[:lng],
-                time: params[:time]})
+          .key({lat: params[:lat], lng: params[:lng]})
           .options(expires_in: 2.minutes) do
             w = Weather.at_time(params[:lat], params[:lng], params[:time])
-        end
+          end
       end
     end
   end
