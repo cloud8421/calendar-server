@@ -1,6 +1,7 @@
 require 'grape'
 require './database'
 require './weather'
+require './geo_lookup'
 require 'json'
 require 'garner/mixins/rack'
 
@@ -58,6 +59,21 @@ module Calendar
           status 404
           {error: 'Event not found'}
         end
+      end
+    end
+
+    resource :geo_lookup do
+      desc 'Get lat/lng for given address'
+      params do
+        requires :address, type: String, desc: 'Address'
+      end
+
+      get do
+        garner
+          .key({address: params[:address]})
+          .options(expires_in: 24.hours) do
+            GeoLookup.coordinates_for(params[:address])
+          end
       end
     end
 
